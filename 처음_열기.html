@@ -190,6 +190,39 @@
       font-size:1.12rem;
       font-weight:900;
     }
+    .quick-start {
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .quick-card {
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .quick-card .step {
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:8px;
+      background:var(--mint);
+      color:#fff;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .quick-card strong {
+      display:block;
+      font-size:1.13rem;
+      margin-bottom:6px;
+    }
+    .quick-card.action {
+      border-color:#efd083;
+      background:#fffaf0;
+    }
     .role-grid {
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -382,6 +415,7 @@
       .wizard-actions { gap:14px; }
       .wizard-actions button { margin-top:2px; }
       .focus-main { grid-template-columns:1fr; }
+      .quick-start { grid-template-columns:1fr; }
       .role-grid { grid-template-columns:1fr; }
       .ops-grid, .progress-report { grid-template-columns:1fr; }
       .ops-line { grid-template-columns:1fr; }
@@ -417,8 +451,8 @@
   <main>
     <section class="hero">
       <div class="panel">
-        <h1>이 파일 하나만<br>열면 됩니다</h1>
-        <p class="sub">쇼피/K뷰티 아이디어가 복잡해졌기 때문에, 이제는 이 통합 메인 파일에서 가입, 콘텐츠, 링크, 성과 추적을 한 번에 관리합니다.</p>
+        <h1>상국님은<br>이것만 보면 됩니다</h1>
+        <p class="sub">K뷰티 제휴마케팅을 처음 하는 사람도 이 파일 하나에서 가입 준비, 콘텐츠 작성, 링크 검수, 성과 추적을 순서대로 따라갈 수 있습니다.</p>
         <div class="badge-row">
           <span class="badge good">초보자용</span>
           <span class="badge good">재고 구매 전 검증</span>
@@ -470,6 +504,23 @@
         <div class="focus-main">
           <div class="focus-action" id="todayFocusAction">StyleKorean 가입 가능 조건부터 확인하세요.</div>
           <div class="percent"><b id="completePercent">0%</b><span>완료율</span></div>
+        </div>
+        <div class="quick-start">
+          <div class="quick-card action">
+            <div class="step">1</div>
+            <strong>가입 조건 확인</strong>
+            <p class="mini">StyleKorean 제휴 가입에 필요한 채널, 게시물, PayPal 준비 여부를 봅니다.</p>
+          </div>
+          <div class="quick-card">
+            <div class="step">2</div>
+            <strong>COSRX 링크 준비</strong>
+            <p class="mini">승인 후 받은 실제 제휴 링크를 넣고 원고와 쇼츠 문구에 반영합니다.</p>
+          </div>
+          <div class="quick-card">
+            <div class="step">3</div>
+            <strong>성과 숫자 기록</strong>
+            <p class="mini">조회수, 클릭수, 구매수, 커미션을 입력해서 다음 상품 확장 여부를 판단합니다.</p>
+          </div>
         </div>
       </div>
       <div class="card">
