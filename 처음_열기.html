@@ -271,6 +271,59 @@
       color:#6f4900;
       font-weight:800;
     }
+    .ops-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin:0 0 18px;
+    }
+    .ops-box {
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .ops-box.strong {
+      border-color:#bcebd6;
+      background:linear-gradient(180deg,#f0fbf6,#fff);
+    }
+    .ops-list {
+      display:grid;
+      gap:9px;
+      margin-top:12px;
+    }
+    .ops-line {
+      display:grid;
+      grid-template-columns:96px 1fr;
+      gap:10px;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fbfffd;
+      align-items:start;
+    }
+    .ops-line b {
+      color:var(--mint-dark);
+      white-space:nowrap;
+    }
+    .progress-report {
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .progress-chip {
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fbfffd;
+    }
+    .progress-chip b {
+      display:block;
+      color:var(--mint-dark);
+      font-size:1.08rem;
+    }
     details.simple-list {
       margin-top:14px;
       border:1px solid var(--line);
@@ -330,6 +383,8 @@
       .wizard-actions button { margin-top:2px; }
       .focus-main { grid-template-columns:1fr; }
       .role-grid { grid-template-columns:1fr; }
+      .ops-grid, .progress-report { grid-template-columns:1fr; }
+      .ops-line { grid-template-columns:1fr; }
       .wide { grid-column:auto; }
       .todo { grid-template-columns:42px 1fr; }
       .todo .badge { grid-column:1 / -1; justify-self:start; }
@@ -377,6 +432,28 @@
         <div class="metric"><b id="mClicks">0</b><span>기록된 클릭수</span></div>
         <div class="metric"><b id="mCommission">$0</b><span>예상 커미션</span></div>
       </div>
+    </section>
+
+    <section class="ops-grid">
+      <article class="ops-box strong">
+        <h2>🧭 상국님 운영 원칙</h2>
+        <p class="mini">이 파일은 “돈 쓰기 전에 검증하고, AI가 최대한 일하고, 상국님은 최종 결정만 하는” 사장실 기준으로 운영합니다.</p>
+        <div class="ops-list">
+          <div class="ops-line"><b>핵심 파일</b><span><code>처음_열기.html</code> 하나만 열고 따라갑니다.</span></div>
+          <div class="ops-line"><b>AI 역할</b><span>원고, 링크 검수, 제목 후보, 성과 계산, 다음 행동 추천을 처리합니다.</span></div>
+          <div class="ops-line"><b>상국님 역할</b><span>로그인, PayPal, 제휴 승인, 최종 발행처럼 본인 확인이 필요한 일만 직접 합니다.</span></div>
+          <div class="ops-line"><b>판단 기준</b><span>조회수보다 클릭수, 클릭수보다 구매수, 구매수보다 커미션을 봅니다.</span></div>
+        </div>
+      </article>
+      <article class="ops-box">
+        <h2>📊 진행률 보고 방식</h2>
+        <p class="mini">긴 작업은 중간에 멈춘 것처럼 보이지 않도록 약 10초마다 현재 위치와 다음 행동을 보고합니다.</p>
+        <div class="progress-report">
+          <div class="progress-chip"><b>진행률 20%</b><span>무엇을 확인 중인지 보고</span></div>
+          <div class="progress-chip"><b>진행률 45%</b><span>원인과 방향이 잡힌 지점 보고</span></div>
+          <div class="progress-chip"><b>진행률 70%</b><span>검증과 마무리 행동 보고</span></div>
+        </div>
+      </article>
     </section>
 
     <nav class="tabs">
