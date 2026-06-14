@@ -113,6 +113,16 @@
     .tab.active { background:var(--mint); border-color:var(--mint); color:#fff; }
     .view { display:none; margin-top:18px; }
     .view.active { display:block; }
+    .view.flash-section {
+      outline:3px solid #1ba779;
+      outline-offset:5px;
+      border-radius:8px;
+      animation:flashSection 1.3s ease;
+    }
+    @keyframes flashSection {
+      0% { background:#e8f8f1; }
+      100% { background:transparent; }
+    }
     .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
     .grid.two { grid-template-columns:repeat(2,1fr); }
     .card { padding:18px; }
@@ -611,10 +621,10 @@
         </article>
       </div>
       <div class="status-board">
-        <div class="status-card"><b>🔗 가입</b><span class="badge mid" id="statusSignup">확인 필요</span><p class="mini">SNS 채널, 게시물, PayPal 준비</p></div>
-        <div class="status-card"><b>🧴 상품</b><span class="badge good">COSRX 1개</span><p class="mini">첫 테스트 상품만 집중</p></div>
-        <div class="status-card"><b>📝 콘텐츠</b><span class="badge mid" id="statusContent">발행 전</span><p class="mini">블로그/쇼츠 원고 준비</p></div>
-        <div class="status-card"><b>📊 성과</b><span class="badge mid" id="statusMetrics">숫자 대기</span><p class="mini">조회, 클릭, 구매, 커미션 기록</p></div>
+        <div class="status-card"><b>🔗 가입</b><span class="badge mid" id="statusSignup">확인 필요</span><p class="mini">링크 준비</p></div>
+        <div class="status-card"><b>🧴 상품</b><span class="badge good">COSRX 1개</span><p class="mini">1개만 테스트</p></div>
+        <div class="status-card"><b>📝 콘텐츠</b><span class="badge mid" id="statusContent">발행 전</span><p class="mini">원고 준비</p></div>
+        <div class="status-card"><b>📊 성과</b><span class="badge mid" id="statusMetrics">숫자 대기</span><p class="mini">클릭 확인</p></div>
       </div>
       <div class="staff-board">
         <div class="staff-card" role="button" tabindex="0" onclick="goStaff('today')" onkeydown="staffKey(event, 'today')"><b>🧭 총괄 매니저</b><p class="mini">다음 행동 정리</p><span class="badge mid" id="staffChief">대기</span></div>
@@ -1153,7 +1163,12 @@ K뷰티 클렌저를 처음 고른다면 세정력만 보지 말고, 매일 쓰�
 
     function goStaff(target) {
       showView(target);
-      document.getElementById(target).scrollIntoView({ behavior: "smooth", block: "start" });
+      const section = document.getElementById(target);
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      section.classList.remove("flash-section");
+      void section.offsetWidth;
+      section.classList.add("flash-section");
+      setTimeout(() => section.classList.remove("flash-section"), 1400);
       const labels = { today: "총괄 화면", link: "가입·링크 화면", content: "글·쇼츠 원고 화면", tracker: "숫자 기록 화면" };
       showToast(`${labels[target] || "담당 화면"}으로 이동했습니다`);
     }
