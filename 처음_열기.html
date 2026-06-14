@@ -438,6 +438,11 @@
       display:block;
       margin-bottom:4px;
     }
+    .staff-card .badge {
+      margin-top:8px;
+      padding:6px 9px;
+      font-size:.82rem;
+    }
     .quick-actions {
       display:flex;
       gap:8px;
@@ -447,6 +452,12 @@
       min-width:150px;
       padding:15px 18px;
       font-size:1.05rem;
+    }
+    .one-thing-button {
+      width:100%;
+      margin-top:12px;
+      padding:17px 18px;
+      font-size:1.12rem;
     }
     .progress-report {
       margin-top:14px;
@@ -526,6 +537,8 @@
       .quick-start { grid-template-columns:1fr; }
       .role-grid { grid-template-columns:1fr; }
       .command-head, .status-board, .staff-board { grid-template-columns:1fr; }
+      .staff-card { padding:20px; min-height:104px; }
+      .staff-card b { font-size:1.16rem; }
       .ops-grid, .progress-report { grid-template-columns:1fr; }
       .ops-line { grid-template-columns:1fr; }
       .wide { grid-column:auto; }
@@ -594,6 +607,7 @@
           <h2>🚦 다음 행동</h2>
           <strong id="bossNextAction">StyleKorean 가입 조건부터 확인하세요.</strong>
           <p class="mini" id="bossDecisionReason">아직 숫자가 없으므로 돈을 쓰기 전에 가입 가능성과 콘텐츠 반응을 먼저 봅니다.</p>
+          <button class="primary one-thing-button" id="oneThingButton" onclick="goStaff('link')">👉 지금 딱 하나만 누르기</button>
         </article>
       </div>
       <div class="status-board">
@@ -603,11 +617,11 @@
         <div class="status-card"><b>📊 성과</b><span class="badge mid" id="statusMetrics">숫자 대기</span><p class="mini">조회, 클릭, 구매, 커미션 기록</p></div>
       </div>
       <div class="staff-board">
-        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('today')" onkeydown="staffKey(event, 'today')"><b>🧭 총괄 매니저</b><p class="mini">다음 행동 정리</p></div>
-        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('link')" onkeydown="staffKey(event, 'link')"><b>🔎 상품 검증원</b><p class="mini">상품/링크 확인</p></div>
-        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('content')" onkeydown="staffKey(event, 'content')"><b>✍️ 콘텐츠 작가</b><p class="mini">글·쇼츠 원고</p></div>
-        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('content')" onkeydown="staffKey(event, 'content')"><b>🛡️ 리스크 검수원</b><p class="mini">과장 표현 방지</p></div>
-        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('tracker')" onkeydown="staffKey(event, 'tracker')"><b>📊 성과 분석가</b><p class="mini">숫자 판단</p></div>
+        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('today')" onkeydown="staffKey(event, 'today')"><b>🧭 총괄 매니저</b><p class="mini">다음 행동 정리</p><span class="badge mid" id="staffChief">대기</span></div>
+        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('link')" onkeydown="staffKey(event, 'link')"><b>🔎 상품 검증원</b><p class="mini">상품/링크 확인</p><span class="badge mid" id="staffProduct">확인 필요</span></div>
+        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('content')" onkeydown="staffKey(event, 'content')"><b>✍️ 콘텐츠 작가</b><p class="mini">글·쇼츠 원고</p><span class="badge mid" id="staffWriter">준비 중</span></div>
+        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('content')" onkeydown="staffKey(event, 'content')"><b>🛡️ 리스크 검수원</b><p class="mini">과장 표현 방지</p><span class="badge good" id="staffRisk">검수 중</span></div>
+        <div class="staff-card" role="button" tabindex="0" onclick="goStaff('tracker')" onkeydown="staffKey(event, 'tracker')"><b>📊 성과 분석가</b><p class="mini">숫자 판단</p><span class="badge mid" id="staffAnalyst">숫자 대기</span></div>
       </div>
     </section>
 
@@ -1052,19 +1066,37 @@ K뷰티 클렌저를 처음 고른다면 세정력만 보지 말고, 매일 쓰�
       const next = document.getElementById("bossNextAction");
       const reason = document.getElementById("bossDecisionReason");
       const box = document.querySelector(".next-action-box");
+      const oneButton = document.getElementById("oneThingButton");
       const signup = document.getElementById("statusSignup");
       const content = document.getElementById("statusContent");
       const metrics = document.getElementById("statusMetrics");
+      const staffChief = document.getElementById("staffChief");
+      const staffProduct = document.getElementById("staffProduct");
+      const staffWriter = document.getElementById("staffWriter");
+      const staffRisk = document.getElementById("staffRisk");
+      const staffAnalyst = document.getElementById("staffAnalyst");
 
       signup.className = `badge ${hasLink ? "good" : "mid"}`;
       signup.textContent = hasLink ? "링크 준비됨" : "확인 필요";
       content.className = `badge ${hasContentReady ? "good" : "mid"}`;
       content.textContent = hasContentReady ? "원고 준비" : "검수 필요";
+      staffChief.className = "badge good";
+      staffChief.textContent = "지휘 중";
+      staffProduct.className = `badge ${hasLink ? "good" : "mid"}`;
+      staffProduct.textContent = hasLink ? "링크 확인" : "링크 필요";
+      staffWriter.className = `badge ${hasContentReady ? "good" : "mid"}`;
+      staffWriter.textContent = hasContentReady ? "원고 준비" : "작성 필요";
+      staffRisk.className = `badge ${hasContentReady ? "good" : "mid"}`;
+      staffRisk.textContent = hasContentReady ? "검수 가능" : "원고 대기";
+      staffAnalyst.className = `badge ${campaigns.length ? "info" : "mid"}`;
+      staffAnalyst.textContent = campaigns.length ? "분석 중" : "숫자 대기";
 
       if (!campaigns.length || total.views < 50) {
         box.className = "next-action-box waiting";
         next.textContent = "가입 조건 확인 후 COSRX 콘텐츠 1개를 먼저 발행하세요.";
         reason.textContent = "아직 판단할 숫자가 부족합니다. 재고 구매보다 클릭 데이터 확보가 먼저입니다.";
+        oneButton.textContent = "👉 지금 딱 하나: 가입·링크 확인";
+        oneButton.onclick = () => goStaff("link");
         metrics.className = "badge mid";
         metrics.textContent = "숫자 대기";
         return;
@@ -1073,23 +1105,39 @@ K뷰티 클렌저를 처음 고른다면 세정력만 보지 말고, 매일 쓰�
         box.className = "next-action-box expanding";
         next.textContent = "구매가 생겼습니다. 같은 방식으로 다음 상품 확장을 검토하세요.";
         reason.textContent = `현재 구매 ${total.orders.toLocaleString("ko-KR")}건, 커미션 $${total.commission.toFixed(2)}입니다.`;
+        oneButton.textContent = "👉 지금 딱 하나: 성과 보고서 보기";
+        oneButton.onclick = () => goStaff("tracker");
         metrics.className = "badge good";
         metrics.textContent = "확장 검토";
+        staffAnalyst.className = "badge good";
+        staffAnalyst.textContent = "확장 검토";
         return;
       }
       if (total.clicks > 0) {
         box.className = "next-action-box modifying";
         next.textContent = "클릭은 있습니다. 제목과 쇼츠 첫 3초 문구를 고쳐보세요.";
         reason.textContent = `현재 CTR ${total.ctr.toFixed(2)}%입니다. 클릭을 구매로 연결하는 설명이 필요합니다.`;
+        oneButton.textContent = "👉 지금 딱 하나: 원고 고치기";
+        oneButton.onclick = () => goStaff("content");
         metrics.className = "badge info";
         metrics.textContent = "수정 테스트";
+        staffWriter.className = "badge info";
+        staffWriter.textContent = "수정 필요";
+        staffAnalyst.className = "badge info";
+        staffAnalyst.textContent = "수정 제안";
         return;
       }
       box.className = "next-action-box danger-step";
       next.textContent = "조회는 있지만 클릭이 없습니다. 제목을 더 직접적으로 바꾸세요.";
       reason.textContent = "사람들이 보고 지나가는 상태입니다. 문제 해결형 제목 후보를 먼저 테스트하세요.";
+      oneButton.textContent = "👉 지금 딱 하나: 제목 후보 보기";
+      oneButton.onclick = () => goStaff("tracker");
       metrics.className = "badge bad";
       metrics.textContent = "제목 수정";
+      staffWriter.className = "badge bad";
+      staffWriter.textContent = "제목 수정";
+      staffAnalyst.className = "badge bad";
+      staffAnalyst.textContent = "클릭 낮음";
     }
 
     function showView(id, button) {
