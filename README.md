@@ -21,6 +21,23 @@
 상국님이 물건을 사지 않고, 제휴 링크/코드로 구매가 발생했을 때 커미션을 받는 구조를 기준으로 만든 정밀 사업 설계서입니다.
 상품 검증, AI 직원 10명 역할, KPI 게이트, 30일·90일 실행 계획, 쇼피 판매 전환 조건까지 한 번에 확인할 수 있습니다.
 
+## AI 직원 데이터 구조
+
+AI 직원들이 대충 일하지 않도록 역할, 작업 큐, 검증 스크립트를 파일로 분리했습니다.
+
+| 파일 | 설명 |
+|---|---|
+| `config/kbeauty-workers.json` | AI 직원 10명의 직무, 입력값, 결과물, 금지 규칙 |
+| `data/kbeauty-tasks.json` | 가입 전부터 확장 판단까지 실제 작업 큐 |
+| `scripts/validate-kbeauty-data.mjs` | 직원 명단과 작업 큐가 서로 맞는지 검사 |
+| `docs/superpowers/plans/2026-06-23-ai-worker-task-queue.md` | 이번 작업의 구현 계획서 |
+
+검증 명령:
+
+```bash
+node scripts/validate-kbeauty-data.mjs
+```
+
 ## 무엇을 할 수 있나
 
 | 기능 | 설명 |

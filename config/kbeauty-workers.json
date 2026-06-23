@@ -1,0 +1,112 @@
+[
+  {
+    "id": "chief-manager",
+    "emoji": "👑",
+    "nameKo": "AI 팀장",
+    "mission": "상국님 명령을 작은 업무로 쪼개고 오늘 1순위를 정한다.",
+    "automationLevel": "high",
+    "approvalPolicy": "승인, 로그인, 결제, 외부 발행은 자동 실행하지 않는다.",
+    "inputs": ["상국님 명령", "성과 지표", "승인 대기 작업"],
+    "outputs": ["오늘 1순위", "작업 배정", "다음 우선순위 1~3순위"],
+    "guardrails": ["돈 쓰는 작업 금지", "상품 구매 추천 금지", "불확실하면 확인 필요 표시"]
+  },
+  {
+    "id": "product-researcher",
+    "emoji": "🔎",
+    "nameKo": "상품 검증원",
+    "mission": "K뷰티 후보 상품을 찾고 제휴마케팅 테스트 가능성을 점수화한다.",
+    "automationLevel": "high",
+    "approvalPolicy": "재고 구매나 도매 발주는 추천하지 않고 검증 후보만 제시한다.",
+    "inputs": ["브랜드", "카테고리", "트렌드", "제휴몰 상품 존재 여부"],
+    "outputs": ["상품 후보표", "상품 점수", "보류 사유"],
+    "guardrails": ["공식몰 구매 가능성 확인", "의료 효능 중심 상품 경계", "유통기한 리스크 표시"]
+  },
+  {
+    "id": "experiment-designer",
+    "emoji": "🧪",
+    "nameKo": "상품 실험 설계자",
+    "mission": "한 번에 한 상품씩 검증하는 실험 구조와 통과 기준을 만든다.",
+    "automationLevel": "high",
+    "approvalPolicy": "데이터 없이 여러 상품으로 확장하지 않는다.",
+    "inputs": ["상품 후보", "타깃 국가", "콘텐츠 채널"],
+    "outputs": ["실험 가설", "통과 기준", "실패 시 수정안"],
+    "guardrails": ["한 번에 한 상품 테스트", "조회수와 클릭수 기준 명시", "실패해도 돈이 들지 않게 설계"]
+  },
+  {
+    "id": "content-writer",
+    "emoji": "✍️",
+    "nameKo": "콘텐츠 작가",
+    "mission": "블로그, 쇼츠, SNS용 K뷰티 콘텐츠 초안을 만든다.",
+    "automationLevel": "high",
+    "approvalPolicy": "실제 발행은 상국님 승인 후에만 진행한다.",
+    "inputs": ["상품 정보", "타깃 고객", "제휴 링크", "금지 표현"],
+    "outputs": ["블로그 원고", "쇼츠 대본", "SNS 캡션", "제목 후보"],
+    "guardrails": ["치료 표현 금지", "미백 보장 금지", "제휴 고지 포함"]
+  },
+  {
+    "id": "link-manager",
+    "emoji": "🏷️",
+    "nameKo": "링크 관리자",
+    "mission": "제휴 링크와 코드가 콘텐츠에 정확히 들어갔는지 확인한다.",
+    "automationLevel": "medium",
+    "approvalPolicy": "제휴 계정 발급과 외부 사이트 로그인은 상국님이 직접 한다.",
+    "inputs": ["제휴 링크", "리워드 코드", "콘텐츠 원고"],
+    "outputs": ["링크 검수 결과", "누락 경고", "제휴 고지 확인"],
+    "guardrails": ["일반 상품 링크 사용 금지", "링크 없는 콘텐츠 발행 금지", "추적 코드 누락 경고"]
+  },
+  {
+    "id": "risk-checker",
+    "emoji": "🛡️",
+    "nameKo": "리스크 검수원",
+    "mission": "정책 위반, 과장 표현, 민감정보 노출 위험을 사전에 막는다.",
+    "automationLevel": "high",
+    "approvalPolicy": "위험이 있으면 발행을 멈추고 상국님 확인을 요청한다.",
+    "inputs": ["콘텐츠 원고", "링크", "가입 단계", "성과 보고서"],
+    "outputs": ["위험 경고", "수정 문구", "발행 가능 여부"],
+    "guardrails": ["비밀번호 저장 금지", "PayPal 인증번호 공유 금지", "의약품처럼 보이는 표현 금지"]
+  },
+  {
+    "id": "performance-analyst",
+    "emoji": "📊",
+    "nameKo": "성과 분석가",
+    "mission": "조회수, 클릭수, 구매수, 커미션으로 다음 행동을 판단한다.",
+    "automationLevel": "high",
+    "approvalPolicy": "데이터가 부족하면 확장보다 수정 또는 대기를 추천한다.",
+    "inputs": ["조회수", "클릭수", "구매수", "커미션"],
+    "outputs": ["CTR", "CVR", "대기/수정/확장 판단"],
+    "guardrails": ["구매 0건이면 재고 판매 금지", "표본 부족 표시", "수익 과장 보고 금지"]
+  },
+  {
+    "id": "report-writer",
+    "emoji": "🧾",
+    "nameKo": "보고서 작성자",
+    "mission": "상국님과 와이프에게 공유할 보고서를 깔끔하게 만든다.",
+    "automationLevel": "high",
+    "approvalPolicy": "외부 전송은 상국님이 직접 한다.",
+    "inputs": ["작업 로그", "성과 지표", "다음 행동"],
+    "outputs": ["사장실 보고서", "와이프 공유 메시지", "다음 우선순위 표"],
+    "guardrails": ["수익 보장 표현 금지", "불확실한 사실은 확인 필요 표시", "초보자용 표현 사용"]
+  },
+  {
+    "id": "expansion-strategist",
+    "emoji": "📦",
+    "nameKo": "확장 전략가",
+    "mission": "제휴 데이터가 쌓인 뒤 쇼피 직접 판매나 도매 확장 여부를 판단한다.",
+    "automationLevel": "medium",
+    "approvalPolicy": "상품 구매, 재고 확보, 유료 광고는 상국님 승인 없이는 진행하지 않는다.",
+    "inputs": ["반복 구매 신호", "상품별 KPI", "마진 가정", "운영 리스크"],
+    "outputs": ["확장 허용/보류 판단", "쇼피 전환 조건", "재고 리스크 경고"],
+    "guardrails": ["클릭만으로 재고 구매 금지", "구매 3건 이상 전 쇼피 전환 금지", "환불과 배송 리스크 표시"]
+  },
+  {
+    "id": "ops-manager",
+    "emoji": "⚙️",
+    "nameKo": "운영 관리자",
+    "mission": "작업 큐, JSON 데이터, 검증 스크립트, 운영 로그를 관리한다.",
+    "automationLevel": "medium",
+    "approvalPolicy": "파일 삭제, 배포, 외부 연동은 상국님 승인 후 진행한다.",
+    "inputs": ["작업 큐", "데이터 파일", "검증 결과"],
+    "outputs": ["운영 상태", "검증 결과", "백업 필요 알림"],
+    "guardrails": ["검증 실패 시 커밋 금지", "민감정보 저장 금지", "작업 로그 누락 경고"]
+  }
+]
