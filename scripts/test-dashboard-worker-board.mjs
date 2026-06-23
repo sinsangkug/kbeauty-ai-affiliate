@@ -17,7 +17,13 @@ assert.ok(html.includes('id="workers"'), "AI 업무판 section is missing");
 assert.ok(html.includes('id="workerSummary"'), "worker summary container is missing");
 assert.ok(html.includes('id="workerBoard"'), "worker board container is missing");
 assert.ok(html.includes('id="taskQueueBoard"'), "task queue board container is missing");
+assert.ok(html.includes('id="workerTaskFilter"'), "worker task filter controls are missing");
+assert.ok(html.includes("setWorkerTaskFilter('all'"), "all task filter button is missing");
+assert.ok(html.includes("setWorkerTaskFilter('ready'"), "ready task filter button is missing");
+assert.ok(html.includes("setWorkerTaskFilter('pending'"), "pending task filter button is missing");
+assert.ok(html.includes("setWorkerTaskFilter('approval_required'"), "approval-required task filter button is missing");
 assert.ok(html.includes("function renderWorkerBoard()"), "renderWorkerBoard function is missing");
+assert.ok(html.includes("function setWorkerTaskFilter(status)"), "setWorkerTaskFilter function is missing");
 assert.ok(html.includes("renderWorkerBoard();"), "renderWorkerBoard is not called during startup");
 
 const embeddedWorkers = extractJsonScript("kbeautyWorkersData");
