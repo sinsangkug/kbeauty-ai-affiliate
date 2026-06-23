@@ -478,6 +478,42 @@
       font-size:1.95rem;
       margin-bottom:10px;
     }
+    .model-lock-card {
+      padding:20px;
+      border:2px solid #c7dcff;
+      border-radius:8px;
+      background:linear-gradient(180deg,#f3f8ff,#fff);
+      box-shadow:var(--shadow);
+    }
+    .model-lock-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .model-lock-head h2 {
+      margin:0;
+      font-size:1.72rem;
+    }
+    .money-flow {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+    .money-step {
+      padding:15px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fff;
+    }
+    .money-step b {
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+      color:var(--mint-dark);
+    }
     .next-action-box {
       padding:20px;
       border:1px solid #efd083;
@@ -762,7 +798,7 @@
       .command-head, .status-board, .staff-board { grid-template-columns:1fr; }
       .staff-card { padding:20px; min-height:104px; }
       .staff-card b { font-size:1.16rem; }
-      .ops-grid, .progress-report, .traffic-board, .example-board { grid-template-columns:1fr; }
+      .ops-grid, .progress-report, .traffic-board, .example-board, .money-flow { grid-template-columns:1fr; }
       .quest-bubble { grid-template-columns:1fr; bottom:10px; }
       .quest-bubble.top { top:10px; }
       .quest-bubble.bottom { bottom:10px; }
@@ -840,6 +876,29 @@
           <button class="primary one-thing-button" id="oneThingButton" onclick="goStaff('link')">👉 지금 딱 하나만 누르기</button>
         </article>
       </div>
+      <article class="model-lock-card">
+        <div class="model-lock-head">
+          <div>
+            <h2>💸 돈 버는 구조 확정</h2>
+            <p><strong>상국님은 물건을 사지 않습니다. 고객이 제휴몰에서 직접 구매하면 커미션을 받습니다.</strong></p>
+          </div>
+          <span class="badge good">무재고 제휴마케팅</span>
+        </div>
+        <div class="money-flow">
+          <div class="money-step">
+            <b>1️⃣ AI 직원이 검증</b>
+            <p class="mini">상품·콘텐츠·위험 표현·링크 누락을 먼저 확인합니다.</p>
+          </div>
+          <div class="money-step">
+            <b>2️⃣ 고객이 링크 클릭</b>
+            <p class="mini">StyleKorean/YesStyle 같은 제휴몰에서 고객이 직접 결제합니다.</p>
+          </div>
+          <div class="money-step">
+            <b>3️⃣ 커미션 발생</b>
+            <p class="mini">취소·환불 없이 조건이 맞으면 상국님에게 제휴 수익이 쌓입니다.</p>
+          </div>
+        </div>
+      </article>
       <div class="stage-strip">
         <strong>📍 현재 단계</strong>
         <span class="stage-chip active" id="stageSignup">1 가입 전</span>
