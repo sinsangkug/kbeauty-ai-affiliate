@@ -12,7 +12,7 @@ function extractJsonScript(id) {
   return JSON.parse(match[1]);
 }
 
-assert.ok(html.includes("onclick=\"showView('workers', this)\""), "AI 업무판 tab is missing");
+assert.ok(html.includes("goStaff('workers')"), "AI 업무판 must remain reachable from the dashboard");
 assert.ok(html.includes('id="workers"'), "AI 업무판 section is missing");
 assert.ok(html.includes('id="workerSummary"'), "worker summary container is missing");
 assert.ok(html.includes('id="workerBoard"'), "worker board container is missing");
