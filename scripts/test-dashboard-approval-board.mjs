@@ -10,8 +10,12 @@ assert.ok(approvalTasks.length > 0, "source task queue must include approval-req
 assert.ok(html.includes("onclick=\"showView('approvals', this)\""), "approval tab is missing");
 assert.ok(html.includes('id="approvals"'), "approval section is missing");
 assert.ok(html.includes('id="approvalSummary"'), "approval summary container is missing");
+assert.ok(html.includes('id="approvalFocusAction"'), "approval focus action card is missing");
+assert.ok(html.includes('id="approvalFocusTitle"'), "approval focus title is missing");
+assert.ok(html.includes('id="approvalFocusOwnerAction"'), "approval focus owner action is missing");
 assert.ok(html.includes('id="approvalTaskBoard"'), "approval task board container is missing");
 assert.ok(html.includes("function renderApprovalBoard()"), "renderApprovalBoard function is missing");
+assert.ok(html.includes("function getTopApprovalTask()"), "top approval task selector is missing");
 assert.ok(html.includes("renderApprovalBoard();"), "renderApprovalBoard is not called during startup");
 
 for (const task of approvalTasks) {
