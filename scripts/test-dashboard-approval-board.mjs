@@ -14,7 +14,12 @@ assert.ok(html.includes('id="approvalFocusAction"'), "approval focus action card
 assert.ok(html.includes('id="approvalFocusTitle"'), "approval focus title is missing");
 assert.ok(html.includes('id="approvalFocusOwnerAction"'), "approval focus owner action is missing");
 assert.ok(html.includes('id="approvalTaskBoard"'), "approval task board container is missing");
+assert.ok(html.includes("오늘 승인 3개만"), "approval tab must explain the simplified 3-item approval view");
+assert.ok(html.includes("const APPROVAL_VISIBLE_LIMIT = 3"), "approval visible limit must stay at 3");
+assert.ok(html.includes("visibleApprovalTasks = approvalTasks.slice(0, APPROVAL_VISIBLE_LIMIT)"), "approval board must render only the visible approval subset");
+assert.ok(html.includes("전체 AI 업무판 보기"), "approval tab must link to the full AI worker board");
 assert.ok(html.includes("function renderApprovalBoard()"), "renderApprovalBoard function is missing");
+assert.ok(html.includes("function getApprovalTasks()"), "approval task sorter is missing");
 assert.ok(html.includes("function getTopApprovalTask()"), "top approval task selector is missing");
 assert.ok(html.includes("renderApprovalBoard();"), "renderApprovalBoard is not called during startup");
 
