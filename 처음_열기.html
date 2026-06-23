@@ -497,6 +497,27 @@
       margin:0;
       font-size:1.72rem;
     }
+    .model-lock-statement {
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:10px;
+      margin:0 0 14px;
+      padding:14px 16px;
+      border:2px solid #156f54;
+      border-radius:8px;
+      background:#e9fff4;
+      color:#12382c;
+      font-size:1.18rem;
+      font-weight:900;
+      line-height:1.35;
+    }
+    .model-lock-statement span {
+      font-size:.92rem;
+      color:#48635a;
+      font-weight:800;
+      text-align:right;
+    }
     .money-flow {
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -866,7 +887,8 @@
       .command-head, .status-board, .staff-board, .worker-overview, .worker-board-layout { grid-template-columns:1fr; }
       .staff-card { padding:20px; min-height:104px; }
       .staff-card b { font-size:1.16rem; }
-      .ops-grid, .progress-report, .traffic-board, .example-board, .money-flow { grid-template-columns:1fr; }
+      .ops-grid, .progress-report, .traffic-board, .example-board, .money-flow, .model-lock-statement { grid-template-columns:1fr; }
+      .model-lock-statement span { text-align:left; }
       .quest-bubble { grid-template-columns:1fr; bottom:10px; }
       .quest-bubble.top { top:10px; }
       .quest-bubble.bottom { bottom:10px; }
@@ -951,6 +973,11 @@
             <p><strong>상국님은 물건을 사지 않습니다. 고객이 제휴몰에서 직접 구매하면 커미션을 받습니다.</strong></p>
           </div>
           <span class="badge good">무재고 제휴마케팅</span>
+        </div>
+        <div class="model-lock-statement" id="affiliateModelStatement">
+          <b>✅ 물건 안 삼</b>
+          <strong>고객이 제휴 링크로 직접 구매하면 상국님에게 커미션이 생깁니다.</strong>
+          <span>재고·포장·배송 없음</span>
         </div>
         <div class="money-flow">
           <div class="money-step">
